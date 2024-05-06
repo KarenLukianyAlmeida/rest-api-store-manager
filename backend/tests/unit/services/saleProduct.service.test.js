@@ -5,13 +5,14 @@ const { saleProductService } = require('../../../src/services');
 const {
   saleProductFromModel,
   salesProductsFromModel,
+  salesProductsFromService,
   saleProductByIdFromService,
   saleProductNonexistentFromService,
-  idInvalidFromService,
-} = require('../../mocks/product.mock');
+} = require('../../mocks/saleProduct.mock');
+const { idInvalidFromService } = require('../../mocks/product.mock');
 
-describe('Realizando testes - PRODUCT SERVICE:', function () {
-  it('Recupera product por id com sucesso', async function () {
+describe('Realizando testes - SALE_PRODUCT SERVICE:', function () {
+  it('Recupera sale por id com sucesso', async function () {
     sinon.stub(saleProductModel, 'findById').resolves(saleProductFromModel);
     const saleId = 2;
 
@@ -24,7 +25,7 @@ describe('Realizando testes - PRODUCT SERVICE:', function () {
     expect(responseService.data).to.deep.equal(responseData);
   });
 
-  it('Nao recupera product por id inexistente', async function () {
+  it('Nao recupera sale por id inexistente', async function () {
     sinon.stub(saleProductModel, 'findById').resolves(undefined);
     const saleId = 999;
     const responseStatus = saleProductNonexistentFromService.status;
@@ -36,7 +37,7 @@ describe('Realizando testes - PRODUCT SERVICE:', function () {
     expect(responseService.data).to.deep.equal(responseData);
   });
 
-  it('Nao recupera product por id inválido', async function () {
+  it('Nao recupera sale por id inválido', async function () {
     const saleId = 'batatinha';
 
     const responseService = await saleProductService.getSaleById(saleId);
@@ -48,13 +49,13 @@ describe('Realizando testes - PRODUCT SERVICE:', function () {
     expect(responseService.data).to.deep.equal(responseData);
   });
 
-  it('Recupera products com sucesso', async function () {
+  it('Recupera sales com sucesso', async function () {
     sinon.stub(saleProductModel, 'getAllSales').resolves(salesProductsFromModel);
 
     const responseService = await saleProductService.getAllSales();
 
-    const responseStatus = salesProductsFromModel.status;
-    const responseData = salesProductsFromModel.data;
+    const responseStatus = salesProductsFromService.status;
+    const responseData = salesProductsFromService.data;
 
     expect(responseService.status).to.equal(responseStatus);
     expect(responseService.data).to.deep.equal(responseData);

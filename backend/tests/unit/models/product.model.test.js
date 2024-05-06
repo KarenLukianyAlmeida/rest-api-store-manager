@@ -9,7 +9,7 @@ const {
 
 describe('Realizando testes - PRODUCT MODEL:', function () {
   it('Recupera todos os produtos com sucesso', async function () {
-    sinon.stub(connection, 'execute').resolves(productsFromModel);
+    sinon.stub(connection, 'execute').resolves([productsFromModel]);
     const products = await productModel.getAllProduct();
 
     expect(products).to.be.an('array');
@@ -18,13 +18,12 @@ describe('Realizando testes - PRODUCT MODEL:', function () {
   });
 
   it('Recupera product pelo id com sucesso', async function () {
-    sinon.stub(connection, 'execute').resolves(productFromModel);
+    sinon.stub(connection, 'execute').resolves([[productFromModel]]);
     const productId = 2;
-
+    
     const product = await productModel.findById(productId);
-
     expect(product).to.be.an('object');
-    expect(product).to.be.deep.equal(productFromModel);
+    expect(product).to.deep.equal(productFromModel);
   });
 
   afterEach(function () {

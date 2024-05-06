@@ -13,7 +13,7 @@ const {
   productFromModel,
   productByIdFromService,
   productNonexistentFromService,
-  productIdInvalidFromService,
+  idInvalidFromService,
 } = require('../../mocks/product.mock');
 
 describe('Realizando testes - PRODUCT CONTROLLER:', function () {
@@ -69,7 +69,7 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
   });
 
   it('Não recupera produto por id inválido', async function () {
-    sinon.stub(productService, 'getProductById').resolves(productIdInvalidFromService);
+    sinon.stub(productService, 'getProductById').resolves(idInvalidFromService);
 
     const req = {
       params: { id: 'batatinha' },
@@ -81,7 +81,7 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
     };
 
     await productController.productById(req, res);
-    const responseData = productIdInvalidFromService.data;
+    const responseData = idInvalidFromService.data;
     expect(res.status).to.have.been.calledWith(422);
     expect(res.json).to.have.been.calledWith(responseData);
   });
