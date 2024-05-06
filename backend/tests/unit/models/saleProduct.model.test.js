@@ -18,8 +18,8 @@ describe('Realizando testes - SALE_PRODUCT MODEL:', function () {
   });
 
   it('Recupera sale pelo id com sucesso', async function () {
-    sinon.stub(connection, 'execute').resolves([[saleProductFromModel]]);
-    const saleId = 2;
+    sinon.stub(connection, 'execute').resolves([saleProductFromModel]);
+    const saleId = 1;
 
     const product = await saleProductModel.findById(saleId);
 

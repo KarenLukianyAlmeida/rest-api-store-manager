@@ -9,8 +9,6 @@ const { productService } = require('../../../src/services');
 const { productController } = require('../../../src/controllers');
 const {
   productsFromService,
-  productsFromModel,
-  productFromModel,
   productByIdFromService,
   productNonexistentFromService,
   idInvalidFromService,
@@ -29,7 +27,7 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
 
     await productController.allProducts(req, res);
     expect(res.status).to.have.been.calledWith(200);
-    expect(res.json).to.have.been.calledWith(productsFromModel);
+    expect(res.json).to.have.been.calledWith(productsFromService.data);
   });
 
   it('Recuperando produto por id com sucesso', async function () {
@@ -46,7 +44,7 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
 
     await productController.productById(req, res);
     expect(res.status).to.have.been.calledWith(200);
-    expect(res.json).to.have.been.calledWith(productFromModel);
+    expect(res.json).to.have.been.calledWith(productByIdFromService.data);
   });
 
   it('Não recupera produto por id inexistente', async function () {
