@@ -14,7 +14,7 @@ const {
   productNameInvalidFromService,
 } = require('../../mocks/product.mock');
 
-describe.only('Realizando testes - PRODUCT SERVICE:', function () {
+describe('Realizando testes - PRODUCT SERVICE:', function () {
   it('Recupera product por id com sucesso', async function () {
     sinon.stub(productModel, 'findById').resolves(productFromModel);
     const productId = 2;

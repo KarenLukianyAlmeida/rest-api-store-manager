@@ -9,8 +9,10 @@ const productFromModel = { id: 2, name: 'Traje de encolhimento' };
 const newProductName = { name: 'Zeldinha' };
 const newProductIdFromModel = { insertId: 4 };
 const newProductFromService = { id: 4, name: 'Zeldinha' };
+const newProductByIdFromService = { status: 'CREATED', data: newProductFromService };
 
 const productByIdFromService = { status: 'SUCCESSFUL', data: productFromModel };
+
 const productsFromService = { status: 'SUCCESSFUL', data: productsFromModel };
 const productNameInvalidFromService = {
   status: 'INVALID_VALUE',
@@ -37,5 +39,6 @@ module.exports = {
   newProductIdFromModel,
   newProductName,
   newProductFromService,
-  productNameInvalidFromService
+  productNameInvalidFromService,
+  newProductByIdFromService,
 };

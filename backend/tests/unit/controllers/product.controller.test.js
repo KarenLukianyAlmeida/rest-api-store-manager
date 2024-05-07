@@ -14,6 +14,7 @@ const {
   idInvalidFromService,
   newProductName,
   newProductFromService,
+  newProductByIdFromService,
 } = require('../../mocks/product.mock');
 
 describe('Realizando testes - PRODUCT CONTROLLER:', function () {
@@ -87,7 +88,7 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
   });
 
   it('Cria product com sucesso', async function () {
-    sinon.stub(productService, 'getProductById').resolves(productByIdFromService);
+    sinon.stub(productService, 'addNewProduct').resolves(newProductByIdFromService);
 
     const req = {
       body: newProductName,
