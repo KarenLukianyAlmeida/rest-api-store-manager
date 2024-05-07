@@ -12,6 +12,8 @@ const {
   productByIdFromService,
   productNonexistentFromService,
   idInvalidFromService,
+  newProductName,
+  newProductFromService,
 } = require('../../mocks/product.mock');
 
 describe('Realizando testes - PRODUCT CONTROLLER:', function () {
@@ -82,6 +84,23 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
     const responseData = idInvalidFromService.data;
     expect(res.status).to.have.been.calledWith(422);
     expect(res.json).to.have.been.calledWith(responseData);
+  });
+
+  it('Cria product com sucesso', async function () {
+    sinon.stub(productService, 'getProductById').resolves(productByIdFromService);
+
+    const req = {
+      body: newProductName,
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productController.addNewProduct(req, res);
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(newProductFromService);
   });
 
   afterEach(function () {

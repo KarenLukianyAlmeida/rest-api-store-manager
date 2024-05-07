@@ -21,7 +21,19 @@ const getProductById = async (productId) => {
   return { status: 'SUCCESSFUL', data: product };
 };
 
+const addNewProduct = async (productData) => {
+  const error = schema.validateProductDataSchema(productData);
+  if (error) {
+    return { status: error.status, data: { message: error.message } };
+  }
+
+  const newProductId = await productModel.addNewProduct(productData);
+  const newProduct = await productModel.findById(newProductId);
+  return { status: 'CREATED', data: newProduct };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
+  addNewProduct,
 };

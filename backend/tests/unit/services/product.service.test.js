@@ -9,9 +9,12 @@ const {
   productByIdFromService,
   productsFromService,
   productNonexistentFromService,
+  newProductName,
+  newProductFromService,
+  productNameInvalidFromService,
 } = require('../../mocks/product.mock');
 
-describe('Realizando testes - PRODUCT SERVICE:', function () {
+describe.only('Realizando testes - PRODUCT SERVICE:', function () {
   it('Recupera product por id com sucesso', async function () {
     sinon.stub(productModel, 'findById').resolves(productFromModel);
     const productId = 2;
@@ -56,6 +59,28 @@ describe('Realizando testes - PRODUCT SERVICE:', function () {
 
     const responseStatus = productsFromService.status;
     const responseData = productsFromService.data;
+
+    expect(responseService.status).to.equal(responseStatus);
+    expect(responseService.data).to.deep.equal(responseData);
+  });
+
+  it('Cria product com sucesso', async function () {
+    sinon.stub(productModel, 'addNewProduct').resolves(4);
+    sinon.stub(productModel, 'findById').resolves(newProductFromService);
+
+    const responseService = await productService.addNewProduct(newProductName);
+
+    expect(responseService.status).to.equal('CREATED');
+    expect(responseService.data).to.deep.equal(newProductFromService);
+  });
+
+  it('Não cria product com name que contenha uma string com menos de 5 caracteres', async function () {
+    const productData = { name: 'bar' };
+
+    const responseService = await productService.addNewProduct(productData);
+
+    const responseStatus = productNameInvalidFromService.status;
+    const responseData = productNameInvalidFromService.data;
 
     expect(responseService.status).to.equal(responseStatus);
     expect(responseService.data).to.deep.equal(responseData);
