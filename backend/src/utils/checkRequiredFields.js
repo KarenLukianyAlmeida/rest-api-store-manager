@@ -7,4 +7,31 @@ const checkRequiredFields = (receivedFields, requiredFields) => {
   }
 };
 
-module.exports = checkRequiredFields;
+const checkSaleFields = (currentObject, requiredFields) => {
+  for (let c = 0; c < requiredFields.length; c += 1) {
+    const currentRequiredField = requiredFields[c];
+    if (!(currentRequiredField in currentObject)) {
+      return `"${currentRequiredField}" is required`;
+    }
+  }
+
+  return null;
+};
+
+const checkRequiredSaleFields = (receivedFields, requiredFields) => {
+  for (let i = 0; i < receivedFields.length; i += 1) {
+    const currentObject = receivedFields[i];
+
+    const missingFieldMessage = checkSaleFields(currentObject, requiredFields);
+    if (missingFieldMessage) {
+      return missingFieldMessage;
+    }
+  }
+
+  return null;
+};
+
+module.exports = {
+  checkRequiredFields,
+  checkRequiredSaleFields,
+};

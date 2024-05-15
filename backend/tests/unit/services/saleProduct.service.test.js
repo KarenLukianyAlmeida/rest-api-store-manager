@@ -8,6 +8,11 @@ const {
   salesProductsFromService,
   saleProductByIdFromService,
   saleProductNonexistentFromService,
+  newSaleProductFromService,
+  newSaleData,
+  newSaleProductFromModel,
+  invalidNewSaleData,
+  newSaleProductInvalidFromService,
 } = require('../../mocks/saleProduct.mock');
 const { idInvalidFromService } = require('../../mocks/product.mock');
 
@@ -56,6 +61,28 @@ describe('Realizando testes - SALE_PRODUCT SERVICE:', function () {
 
     const responseStatus = salesProductsFromService.status;
     const responseData = salesProductsFromService.data;
+
+    expect(responseService.status).to.equal(responseStatus);
+    expect(responseService.data).to.deep.equal(responseData);
+  });
+
+  it('Cria sale com sucesso', async function () {
+    sinon.stub(saleProductModel, 'addNewSale').resolves(newSaleProductFromModel);
+
+    const responseService = await saleProductService.addNewSale(newSaleData);
+
+    const responseStatus = newSaleProductFromService.status;
+    const responseData = newSaleProductFromService.data;
+
+    expect(responseService.status).to.equal(responseStatus);
+    expect(responseService.data).to.deep.equal(responseData);
+  });
+
+  it('Não cria sale com quantidade menor ou igual a zero', async function () {
+    const responseService = await saleProductService.addNewSale(invalidNewSaleData);
+
+    const responseStatus = newSaleProductInvalidFromService.status;
+    const responseData = newSaleProductInvalidFromService.data;
 
     expect(responseService.status).to.equal(responseStatus);
     expect(responseService.data).to.deep.equal(responseData);

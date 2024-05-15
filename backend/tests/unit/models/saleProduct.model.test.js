@@ -5,6 +5,11 @@ const { saleProductModel } = require('../../../src/models');
 const {
   saleProductFromModel,
   salesProductsFromModel,
+  newSaleData,
+  newSaleProductIdFromModel,
+  addFirstSaleProduct,
+  addSecondSaleProduct,
+  newSaleProductFromModel,
 } = require('../../mocks/saleProduct.mock');
 
 describe('Realizando testes - SALE_PRODUCT MODEL:', function () {
@@ -25,6 +30,17 @@ describe('Realizando testes - SALE_PRODUCT MODEL:', function () {
 
     expect(product).to.be.an('object');
     expect(product).to.be.deep.equal(saleProductFromModel);
+  });
+
+  it('Cria sale com sucesso', async function () {
+    const executeStub = sinon.stub(connection, 'execute');
+    executeStub.onCall(0).resolves([{ insertId: newSaleProductIdFromModel }]);
+    executeStub.onCall(1).resolves(addFirstSaleProduct);
+    executeStub.onCall(2).resolves(addSecondSaleProduct);
+
+    const newSale = await saleProductModel.addNewSale(newSaleData);
+    expect(newSale).to.be.a('object');
+    expect(newSale).to.be.deep.equal(newSaleProductFromModel);
   });
 
   afterEach(function () {

@@ -21,7 +21,18 @@ const getSaleById = async (saleId) => {
   return { status: 'SUCCESSFUL', data: sale };
 };
 
+const addNewSale = async (saleData) => {
+  const error = schema.validateSaleDataSchema(saleData);
+  if (error) {
+    return { status: error.status, data: { message: error.message } };
+  }
+
+  const newSale = await saleProductModel.addNewSale(saleData);
+  return { status: 'CREATED', data: newSale };
+};
+
 module.exports = {
   getAllSales,
   getSaleById,
+  addNewSale,
 };

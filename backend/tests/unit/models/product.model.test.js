@@ -1,5 +1,6 @@
-const { expect } = require('chai');
+const chai = require('chai');
 const sinon = require('sinon');
+const sinonChai = require('sinon-chai');
 const connection = require('../../../src/models/connection');
 const { productModel } = require('../../../src/models');
 const {
@@ -8,6 +9,9 @@ const {
   newProductIdFromModel,
   newProductName,
 } = require('../../mocks/product.mock');
+
+chai.use(sinonChai);
+const { expect } = chai;
 
 describe('Realizando testes - PRODUCT MODEL:', function () {
   it('Recupera todos os produtos com sucesso', async function () {
@@ -33,6 +37,25 @@ describe('Realizando testes - PRODUCT MODEL:', function () {
 
     const productId = await productModel.addNewProduct(newProductName);
     expect(productId).to.be.a('number');
+  });
+
+  it('Atualiza product com sucesso', async function () {
+    const executeSutb = sinon.stub(connection, 'execute').resolves();
+    const productData = { name: 'Martelo do Batman' };
+    const productId = 2;
+
+    await productModel.updateProduct(productData, productId);
+
+    expect(executeSutb).to.have.been.calledOnceWith();
+  });
+
+  it('Deleta product com sucesso', async function () {
+    const executeSutb = sinon.stub(connection, 'execute').resolves();
+    const productId = 2;
+
+    await productModel.deleteProduct(productId);
+
+    expect(executeSutb).to.have.been.calledOnceWith();
   });
 
   afterEach(function () {

@@ -32,8 +32,37 @@ const addNewProduct = async (productData) => {
   return { status: 'CREATED', data: newProduct };
 };
 
+const updateProduct = async (productData, productId) => {
+  const error = schema.validateProductDataSchema(productData);
+  if (error) {
+    return { status: error.status, data: { message: error.message } };
+  }
+
+  const product = await productModel.findById(productId);
+  if (!product || product.length === 0) {
+    return { status: 'NOT_FOUND', data: { message: 'Product not found' } };
+  }
+
+  await productModel.updateProduct(productData, productId);
+
+  const updatedProduct = await productModel.findById(productId);
+  return { status: 'SUCCESSFUL', data: updatedProduct };
+};
+
+const deleteProduct = async (productId) => {
+  const product = await productModel.findById(Number(productId));
+  if (!product || product.length === 0) {
+    return { status: 'NOT_FOUND', data: { message: 'Product not found' } };
+  }
+
+  await productModel.deleteProduct(productId);
+  return { status: 'NO_CONTENT', data: 'deleted product' };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   addNewProduct,
+  updateProduct,
+  deleteProduct,
 };
