@@ -7,6 +7,15 @@ const checkRequiredFields = (receivedFields, requiredFields) => {
   }
 };
 
+const checkRequiredQuantityField = (receivedFields, requiredFields) => {
+  for (let i = 0; i < requiredFields.length; i += 1) {
+    const currentField = requiredFields[i];
+    if (!(currentField in receivedFields)) {
+      return '"quantity" is required';
+    }
+  }
+};
+
 const checkSaleFields = (currentObject, requiredFields) => {
   for (let c = 0; c < requiredFields.length; c += 1) {
     const currentRequiredField = requiredFields[c];
@@ -34,4 +43,5 @@ const checkRequiredSaleFields = (receivedFields, requiredFields) => {
 module.exports = {
   checkRequiredFields,
   checkRequiredSaleFields,
+  checkRequiredQuantityField,
 };

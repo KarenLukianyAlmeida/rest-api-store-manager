@@ -15,6 +15,8 @@ const {
   newProductName,
   newProductFromService,
   newProductByIdFromService,
+  updatedProduct,
+  deleteProductFromService,
 } = require('../../mocks/product.mock');
 
 describe('Realizando testes - PRODUCT CONTROLLER:', function () {
@@ -102,6 +104,41 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
     await productController.addNewProduct(req, res);
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(newProductFromService);
+  });
+
+  it('Atualiza product com sucesso', async function () {
+    sinon.stub(productService, 'updateProduct').resolves(updatedProduct);
+
+    const req = {
+      params: { id: 2 },
+      body: { name: 'Traje de encolhimento' },
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productController.updateProduct(req, res);
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(updatedProduct.data);
+  });
+
+  it('Deleta product com sucesso', async function () {
+    sinon.stub(productService, 'deleteProduct').resolves(deleteProductFromService);
+
+    const req = {
+      params: { id: 2 },
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productController.deleteProduct(req, res);
+    expect(res.status).to.have.been.calledWith(204);
+    expect(res.json).to.have.been.calledWith(deleteProductFromService.data);
   });
 
   afterEach(function () {

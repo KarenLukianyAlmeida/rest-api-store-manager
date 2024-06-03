@@ -20,8 +20,26 @@ const addNewSale = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(data);
 };
 
+const deleteSale = async (req, res) => {
+  const { id } = req.params;
+
+  const { status, data } = await saleProductService.deleteSale(Number(id));
+  return res.status(mapStatusHTTP(status)).json(data);
+};
+
+const updateProductQuantity = async (req, res) => {
+  const { saleId, productId } = req.params;
+  const { quantity } = req.body;
+
+  const { status, data } = await saleProductService
+    .updateProductQuantity(saleId, productId, quantity);
+  return res.status(mapStatusHTTP(status)).json(data);
+};
+
 module.exports = {
   allSales,
   saleById,
   addNewSale,
+  deleteSale,
+  updateProductQuantity,
 };

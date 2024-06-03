@@ -12,6 +12,7 @@ const {
   newProductName,
   newProductFromService,
   productNameInvalidFromService,
+  updatedProduct,
 } = require('../../mocks/product.mock');
 
 describe('Realizando testes - PRODUCT SERVICE:', function () {
@@ -94,6 +95,35 @@ describe('Realizando testes - PRODUCT SERVICE:', function () {
 
     expect(responseService.status).to.equal('NO_CONTENT');
     expect(responseService.data).to.deep.equal('deleted product');
+  });
+
+  it('Atualiza product com sucesso', async function () {
+    const findById = sinon.stub(productModel, 'findById');
+    findById.onCall(0).resolves({ id: 2, name: 'Martelo do Batman' });
+    findById.onCall(1).resolves(productFromModel);
+
+    sinon.stub(productModel, 'updateProduct').resolves();
+
+    const responseService = await productService.updateProduct();
+
+    expect(responseService.status).to.equal(updatedProduct.status);
+    expect(responseService.data).to.deep.equal(productFromModel);
+  });
+
+  it('Product is not updated when the "name" value has fewer than 5 characters', async function () {
+    const responseService = await productService.updateProduct({ name: 'Mart' }, { productId: 2 });
+
+    expect(responseService.status).to.equal('INVALID_VALUE');
+    expect(responseService.data).to.deep.equal({ message: '"name" length must be at least 5 characters long' });
+  });
+
+  it('Product is not updated when product does not exist', async function () {
+    sinon.stub(productModel, 'findById').resolves(undefined);
+
+    const responseService = await productService.updateProduct({ name: 'Martelo do Batman' }, { productId: 999 });
+
+    expect(responseService.status).to.equal('NOT_FOUND');
+    expect(responseService.data).to.deep.equal({ message: 'Product not found' });
   });
 
   it('Não deleta product inexistente', async function () {

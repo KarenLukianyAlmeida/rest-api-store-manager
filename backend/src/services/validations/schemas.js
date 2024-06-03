@@ -9,8 +9,11 @@ const saleSchema = Joi.object({
   quantity: Joi.number().min(1),
 });
 
+const quantitySchema = Joi.number().min(1);
+
 module.exports = {
   idSchema,
   productSchema,
   saleSchema,
+  quantitySchema,
 };

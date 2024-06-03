@@ -65,6 +65,21 @@ const saleProductNonexistentFromService = {
   data: { message: 'Sale not found' },
 };
 
+const deletedSaleFromService = { status: 'NO_CONTENT', data: 'deleted sale' };
+const dontDeleteSaleFromService = { status: 'NOT_FOUND', data: { message: 'Sale not found' } };
+
+const updatedSaleProduct = {
+  date: '2024-05-16 14:31:11',
+  productId: 2,
+  saleId: 2,
+  quantity: 20,
+};
+
+const updateSaleProductFromService = {
+  status: 'SUCCESSFUL',
+  data: updatedSaleProduct,
+};
+
 module.exports = {
   saleProductFromModel,
   salesProductsFromModel,
@@ -79,4 +94,8 @@ module.exports = {
   newSaleProductFromService,
   newSaleProductInvalidFromService,
   invalidNewSaleData,
+  deletedSaleFromService,
+  dontDeleteSaleFromService,
+  updatedSaleProduct,
+  updateSaleProductFromService,
 };

@@ -29,6 +29,9 @@ const idInvalidFromService = {
   data: { message: '"value" must be a number' },
 };
 
+const updatedProduct = { status: 'SUCCESSFUL', data: productFromModel };
+const deleteProductFromService = { status: 'NO_CONTENT', data: 'deleted product' };
+
 module.exports = {
   productsFromModel,
   productFromModel,
@@ -41,4 +44,6 @@ module.exports = {
   newProductFromService,
   productNameInvalidFromService,
   newProductByIdFromService,
+  updatedProduct,
+  deleteProductFromService,
 };

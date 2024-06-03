@@ -43,6 +43,29 @@ describe('Realizando testes - SALE_PRODUCT MODEL:', function () {
     expect(newSale).to.be.deep.equal(newSaleProductFromModel);
   });
 
+  it('Deleta sale com sucesso', async function () {
+    const executeStub = sinon.stub(connection, 'execute');
+    executeStub.onCall(0).resolves({ id: 2, date: '2024-05-16 14:31:11' });
+    executeStub.onCall(1).resolves();
+
+    const saleId = 2;
+
+    await saleProductModel.deleteSale(saleId);
+    expect(executeStub.callCount).to.equal(2);
+  });
+
+  it('Atualiza quntidade de um producto em uma determinada venda', async function () {
+    const executeStube = sinon.stub(connection, 'execute').resolves();
+
+    const saleId = 1;
+    const productId = 1;
+    const quantity = 20;
+
+    await saleProductModel.updateProductQuantity(saleId, productId, quantity);
+
+    expect(executeStube).to.have.been.callCount(1);
+  });
+
   afterEach(function () {
     sinon.restore();
   });
