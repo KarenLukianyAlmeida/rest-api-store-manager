@@ -38,10 +38,17 @@ const deleteProduct = async (productId) => {
   await connection.execute(query, [productId]);
 };
 
+const getProductsByName = async (name) => {
+  const [products] = await connection.execute(`SELECT * FROM products WHERE name LIKE '%${name}%'`);
+  console.log('Products from model: ', products);
+  return products;
+};
+
 module.exports = {
   findById,
   getAllProduct,
   addNewProduct,
   updateProduct,
   deleteProduct,
+  getProductsByName,
 };

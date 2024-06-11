@@ -135,6 +135,39 @@ describe('Realizando testes - PRODUCT SERVICE:', function () {
     expect(responseService.data).to.deep.equal({ message: 'Product not found' });
   });
 
+  it('Get all products without a "name" on the URL', async function () {
+    sinon.stub(productModel, 'getProductsByName').resolves([
+      { id: 1, name: 'Martelo de Thor' },
+      { id: 2, name: 'Traje de encolhimento' },
+      { id: 3, name: 'Escudo do Capitão América' },
+    ]);
+
+    const responseService = await productService.getProductsByName('');
+
+    expect(responseService.status).to.be.equal('SUCCESSFUL');
+    expect(responseService.data).to.be.an('array');
+    expect(responseService.data.length).to.be.equal(3);
+  });
+
+  it('Return a "[]" when the product is non-existent', async function () {
+    sinon.stub(productModel, 'getProductsByName').resolves([]);
+
+    const responseService = await productService.getProductsByName('batatinha');
+
+    expect(responseService.status).to.be.equal('SUCCESSFUL');
+    expect(responseService.data).to.be.an('array');
+    expect(responseService.data.length).to.be.equal(0);
+  });
+
+  it('Get a product by name', async function () {
+    sinon.stub(productModel, 'getProductsByName').resolves([{ id: 1, name: 'Martelo de Thor' }]);
+
+    const responseService = await productService.getProductsByName('Martelo');
+
+    expect(responseService.status).to.be.equal('SUCCESSFUL');
+    expect(responseService.data).to.be.an('array');
+  });
+
   afterEach(function () {
     sinon.restore();
   });

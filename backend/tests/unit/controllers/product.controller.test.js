@@ -141,6 +141,30 @@ describe('Realizando testes - PRODUCT CONTROLLER:', function () {
     expect(res.json).to.have.been.calledWith(deleteProductFromService.data);
   });
 
+  it('Return a product by name', async function () {
+    sinon.stub(productService, 'getProductsByName').resolves({
+      status: 'SUCCESSFUL',
+      data: {
+        id: 1,
+        name: 'Martelo de Thor',
+      },
+    });
+
+    const req = { query: { q: 'Martelo' } };
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productController.getProductsByName(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith({
+      id: 1,
+      name: 'Martelo de Thor',
+    });
+  });
+
   afterEach(function () {
     sinon.restore();
   });

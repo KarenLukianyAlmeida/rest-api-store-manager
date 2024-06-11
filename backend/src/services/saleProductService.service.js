@@ -1,4 +1,4 @@
-const { saleProductModel } = require('../models');
+const { saleProductModel, productModel } = require('../models');
 const schema = require('./validations/validationsInputValue');
 
 const getAllSales = async () => {

@@ -58,6 +58,14 @@ describe('Realizando testes - PRODUCT MODEL:', function () {
     expect(executeSutb).to.have.been.calledOnceWith();
   });
 
+  it('Get products by name', async function () {
+    sinon.stub(connection, 'execute').resolves([{ id: 1, name: 'Martelo de Thor' }]);
+
+    const products = await productModel.getProductsByName('Martelo');
+
+    expect(products).to.be.an('object');
+  });
+
   afterEach(function () {
     sinon.restore();
   });

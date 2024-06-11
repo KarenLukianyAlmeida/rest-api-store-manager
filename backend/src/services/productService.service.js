@@ -59,10 +59,26 @@ const deleteProduct = async (productId) => {
   return { status: 'NO_CONTENT', data: 'deleted product' };
 };
 
+const getProductsByName = async (name) => {
+  console.log('Name em service: ', typeof name);
+  if (name === undefined) {
+    const allProducts = await productModel.getAllProduct();
+    return { status: 'SUCCESSFUL', data: allProducts };
+  }
+
+  const products = await productModel.getProductsByName(name);
+  if (!products || products.length === 0) {
+    return { status: 'SUCCESSFUL', data: [] };
+  }
+
+  return { status: 'SUCCESSFUL', data: products };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   addNewProduct,
   updateProduct,
   deleteProduct,
+  getProductsByName,
 };
