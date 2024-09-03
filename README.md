@@ -18,12 +18,91 @@ The RESTful API developed is a sales management system where it is possible to c
 <details>
   <summary><strong>EndPoints</strong></summary><br />
 
-  > The test verifies if the function correctly returns the number of occurrences of the specified word.
-  >
-  > - Command to run the test in the terminal:
+  > 1. Retrona todos os produtos cadastrados: 
   >
   > ```bash
-  > python3 -m pytest tests/counter/test_counter.py
+  > GET /products
+  > ```
+  >   
+  > 2. Retorna apenas o produto com o `id` da URL:
+  >
+  > ```bash
+  > GET /products/:id
+  > ```
+  >   
+  > 3. Retorna todas as vendas:
+  >
+  > ```bash
+  > GET /sales
+  > ```
+  >   
+  > 4. Retorna apenas a venda com o `id` da URL:
+  >
+  > ```bash
+  > GET /sales/:id
+  > ```
+  >   
+  > 5. Retorna apenas o produto com o `id` da URL:
+  >
+  > ```bash
+  > POST /products
+  > ```
+  >   
+  > 6. Cadastra novo produto:
+  >
+  > ```bash
+  > GET /products/:id
+  > ```
+  >
+  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >>
+  >>```bash
+  >> { "name": "ProdutoX" }
+  >> ```
+  >   
+  > 7. Cadastra nova venda:
+  >
+  > ```bash
+  > POST /sales
+  > ```
+  >
+  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >>
+  >>```json
+  >>[
+  >>  {
+  >>    "productId": 1,
+  >>    "quantity": 1
+  >>  },
+  >>  {
+  >>    "productId": 2,
+  >>    "quantity": 5
+  >>  }
+  >> ]
+  >> ```
+  >  
+  > 8. Retorna apenas o produto com o `id` da URL:
+  >
+  > ```bash
+  > GET /products/:id
+  > ```
+  >   
+  > 9. Retorna apenas o produto com o `id` da URL:
+  >
+  > ```bash
+  > GET /products/:id
+  > ```
+  >   
+  > 10. Retorna apenas o produto com o `id` da URL:
+  >
+  > ```bash
+  > GET /products/:id
+  > ```
+  >   
+  > 11. Retorna apenas o produto com o `id` da URL:
+  >
+  > ```bash
+  > GET /products/:id
   > ```
 
 </details>
