@@ -1,13 +1,13 @@
 
 # Skills Developed
 
-- __Interacting with MySQL:__ Gained proficiency in interacting with a relational database using MySQL.
+- __Interacting with MySQL:__ Gained proficiency in interacting with a relational database using ***MySQL***.
   
 - __Layered Architecture Implementation:__ Developed an API using a layered architecture approach to ensure organized and maintainable code.
   
 - __Data Validation:__ Implemented robust data validation techniques to ensure the integrity of information received by the API.
   
-- __API Testing:__ Wrote comprehensive tests to validate the functionality of API endpoints, ensuring reliable and error-free operations.
+- __API Testing:__ Wrote comprehensive tests to validate the functionality of API endpoints, ensuring reliable and error-free operations. ___Mocha, Sinon, and Chai___ were used.
 
 # What was developed
 
