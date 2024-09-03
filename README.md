@@ -56,7 +56,7 @@ The RESTful API developed is a sales management system where it is possible to c
   >
   >> O corpo da requisição deverá seguir o formato abaixo: 
   >>
-  >>```bash
+  >>```json
   >> { "name": "ProdutoX" }
   >> ```
   >   
@@ -81,12 +81,20 @@ The RESTful API developed is a sales management system where it is possible to c
   >> ]
   >> ```
   >  
-  > 8. Retorna apenas o produto com o `id` da URL:
+  > 8. Atualiza produto:
   >
   > ```bash
-  > GET /products/:id
+  > PUT /products/:id
   > ```
-  >   
+  >
+  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >>
+  >>```json
+  >> {
+  >>  "name": "Martelo do Batman"
+  >> }
+  >> ```
+  >
   > 9. Retorna apenas o produto com o `id` da URL:
   >
   > ```bash
