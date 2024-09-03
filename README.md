@@ -95,34 +95,55 @@ The RESTful API developed is a sales management system where it is possible to c
   >> }
   >> ```
   >
-  > 9. Retorna apenas o produto com o `id` da URL:
+  > 9. Deleta produto por `ìd`:
   >
   > ```bash
-  > GET /products/:id
+  > DELETE /products/:id
   > ```
   >   
-  > 10. Retorna apenas o produto com o `id` da URL:
+  > 10. Deleta venda por `ìd`:
   >
   > ```bash
-  > GET /products/:id
+  > DELETE /sales/:id
   > ```
   >   
-  > 11. Retorna apenas o produto com o `id` da URL:
+  > 11. Atualiza quantidade de um produto:
   >
   > ```bash
-  > GET /products/:id
+  > /sales/:saleId/products/:productId/quantity
   > ```
-
+  >
+  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >>
+  >>```json
+  >> {
+  >>  "quantity": 20
+  >> }
+  >> ```
+  >
+  > 12. Retorna todos os produtos que contenham o nome declarado na query:
+  >
+  > ```bash
+  > GET /products/search
+  > ```
+  >
+  >> O query params da requisição deverá seguir o formato abaixo:
+  >>
+  >>```bash
+  >>  http://localhost:PORT/products/search?q=Martelo
+  >> ```
+  >
 </details>
 
 <details>
   <summary><strong>Tests</strong></summary><br />
 
-  > - Method read: Responsible for opening the CSV file and returning the data as a list of dictionaries.
+  > Para rodar todos os testes utilize o seguinte comando no terminal:
+  > 
+  > ```bash
+  > npm run test:mocha
+  > ```
   >     
-  > - Method get_unique_job_types: Responsible for returning a list of unique values present in the `job_type` column of the CSV file.
-  >     
-  > - Method filter_by_multiple_criteria: Allows filtering jobs by job type.
 
 </details>
 
