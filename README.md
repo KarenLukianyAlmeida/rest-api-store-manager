@@ -16,7 +16,7 @@ The RESTful API developed is a sales management system where it is possible to c
 # Features
 
 <details>
-  <summary><strong>On tests/counter/test_counter.py</strong></summary><br />
+  <summary><strong>EndPoints</strong></summary><br />
 
   > The test verifies if the function correctly returns the number of occurrences of the specified word.
   >
@@ -29,29 +29,13 @@ The RESTful API developed is a sales management system where it is possible to c
 </details>
 
 <details>
-  <summary><strong>On src/insights/jobs.py</strong></summary><br />
+  <summary><strong>Tests</strong></summary><br />
 
   > - Method read: Responsible for opening the CSV file and returning the data as a list of dictionaries.
   >     
   > - Method get_unique_job_types: Responsible for returning a list of unique values present in the `job_type` column of the CSV file.
   >     
   > - Method filter_by_multiple_criteria: Allows filtering jobs by job type.
-
-</details>
-
-<details>
-  <summary><strong>On src/insights/industries.py</strong></summary><br />
-
-  > Method get_unique_industries: Should return a list of unique values present in the `industry` column.
-
-</details>
-
-<details>
-  <summary><strong>On src/insights/salaries.py</strong></summary><br />
-
-  > Method get_max_salary: Should extract the highest salary from the data that has been read and previously stored in the `self.jobs_list` list. The `ProcessSalaries` class inherits functionalities from the `ProcessJobs` class, including the ability to access previously read data without needing to read the file again.
-     
-  > Method get_min_salary: Should extract the lowest salary from the data that has been read and previously stored in the `self.jobs_list` list.
 
 </details>
 
