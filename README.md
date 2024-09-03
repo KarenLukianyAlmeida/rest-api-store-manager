@@ -16,57 +16,51 @@ The RESTful API developed is a sales management system where it is possible to c
 # Features
 
 <details>
-  <summary><strong>EndPoints</strong></summary><br />
+  <summary><strong>Endpoints</strong></summary><br />
 
-  > 1. Retrona todos os produtos cadastrados: 
+  > 1. Returns all registered products: 
   >
   > ```bash
   > GET /products
   > ```
   >   
-  > 2. Retorna apenas o produto com o `id` da URL:
+  > 2. Returns only the product with the `id` from the URL:
   >
   > ```bash
   > GET /products/:id
   > ```
   >   
-  > 3. Retorna todas as vendas:
+  > 3. Returns all sales:
   >
   > ```bash
   > GET /sales
   > ```
   >   
-  > 4. Retorna apenas a venda com o `id` da URL:
+  > 4. Returns only the sale with the `id` from the URL:
   >
   > ```bash
   > GET /sales/:id
   > ```
   >   
-  > 5. Retorna apenas o produto com o `id` da URL:
+  > 5. Registers a new product:
   >
   > ```bash
   > POST /products
   > ```
-  >   
-  > 6. Cadastra novo produto:
   >
-  > ```bash
-  > GET /products/:id
-  > ```
-  >
-  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >> The request body should follow the format below:
   >>
   >>```json
   >> { "name": "ProdutoX" }
   >> ```
   >   
-  > 7. Cadastra nova venda:
+  > 6. Registers a new sale:
   >
   > ```bash
   > POST /sales
   > ```
   >
-  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >> The request body should follow the format below:
   >>
   >>```json
   >>[
@@ -81,13 +75,13 @@ The RESTful API developed is a sales management system where it is possible to c
   >> ]
   >> ```
   >  
-  > 8. Atualiza produto:
+  > 7. Updates a product:
   >
   > ```bash
   > PUT /products/:id
   > ```
   >
-  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >> The request body should follow the format below:
   >>
   >>```json
   >> {
@@ -95,25 +89,25 @@ The RESTful API developed is a sales management system where it is possible to c
   >> }
   >> ```
   >
-  > 9. Deleta produto por `ìd`:
+  > 8. Deletes a product by `id`:
   >
   > ```bash
   > DELETE /products/:id
   > ```
   >   
-  > 10. Deleta venda por `ìd`:
+  > 9. Deletes a sale by `id`:
   >
   > ```bash
   > DELETE /sales/:id
   > ```
   >   
-  > 11. Atualiza quantidade de um produto:
+  > 10. Updates the quantity of a product:
   >
   > ```bash
   > /sales/:saleId/products/:productId/quantity
   > ```
   >
-  >> O corpo da requisição deverá seguir o formato abaixo: 
+  >> The request body should follow the format below:
   >>
   >>```json
   >> {
@@ -121,13 +115,13 @@ The RESTful API developed is a sales management system where it is possible to c
   >> }
   >> ```
   >
-  > 12. Retorna todos os produtos que contenham o nome declarado na query:
+  > 11. Returns all products that contain the declared name in the query:
   >
   > ```bash
   > GET /products/search
   > ```
   >
-  >> O query params da requisição deverá seguir o formato abaixo:
+  >> The query params of the request should follow the format below:
   >>
   >>```bash
   >>  http://localhost:PORT/products/search?q=Martelo
@@ -138,7 +132,7 @@ The RESTful API developed is a sales management system where it is possible to c
 <details>
   <summary><strong>Tests</strong></summary><br />
 
-  > Para rodar todos os testes utilize o seguinte comando no terminal:
+  > To run all tests, use the following command in the terminal:
   > 
   > ```bash
   > npm run test:mocha
@@ -146,6 +140,7 @@ The RESTful API developed is a sales management system where it is possible to c
   >     
 
 </details>
+
 
 # Execute the project
 
