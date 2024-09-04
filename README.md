@@ -1,4 +1,8 @@
 
+# What was developed
+
+This project aimed to develop an API that manages sales and products in a store system using CRUD operations. The MsSQL database was used.
+
 # Skills Developed
 
 - __Interacting with MySQL:__ Gained proficiency in interacting with a relational database using ***MySQL***.
@@ -8,10 +12,6 @@
 - __Data Validation:__ Implemented robust data validation techniques to ensure the integrity of information received by the API.
   
 - __API Testing:__ Wrote comprehensive tests to validate the functionality of API endpoints, ensuring reliable and error-free operations. ___Mocha, Sinon, and Chai___ were used.
-
-# What was developed
-
-The RESTful API developed is a sales management system where it is possible to create, view, delete, and update products and sales. MySQL was used to manage the data.
 
 # Features
 
