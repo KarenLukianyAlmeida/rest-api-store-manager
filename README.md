@@ -1,7 +1,7 @@
 
 # What was developed
 
-This project aimed to develop an API that manages sales and products in a store system using CRUD operations. The MsSQL database was used.
+This project aimed to develop an API that manages sales and products in a store system using CRUD operations. The MySQL database was used.
 
 # Skills Developed
 
