@@ -7,7 +7,7 @@ This project aimed to develop an API that manages sales and products in a store 
 
 > Node.js | TypeScript | Express | MySQL | SQL | Mocha | Sinon | Chai | VS Code. 
 
-# Skills Developed
+## Skills Developed
 
 - __Interacting with MySQL:__ Gained proficiency in interacting with a relational database using ***MySQL***.
   
@@ -17,7 +17,7 @@ This project aimed to develop an API that manages sales and products in a store 
   
 - __API Testing:__ Wrote comprehensive tests to validate the functionality of API endpoints, ensuring reliable and error-free operations. ___Mocha, Sinon, and Chai___ were used.
 
-# Features
+## Features
 
 <details>
   <summary><strong>Endpoints</strong></summary><br />
@@ -146,7 +146,7 @@ This project aimed to develop an API that manages sales and products in a store 
 </details>
 
 
-# Execute the project
+## Execute the project
 
 1. __Clone the repository__
 
