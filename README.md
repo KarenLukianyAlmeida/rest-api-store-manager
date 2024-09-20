@@ -11,7 +11,7 @@ This project aimed to develop an API that manages sales and products in a store 
 
 - __Interacting with MySQL:__ Gained proficiency in interacting with a relational database using ***MySQL***.
   
-- __Layered Architecture Implementation:__ Developed an API using a layered architecture approach to ensure organized and maintainable code.
+- __Layered Architecture Implementation:__ Organized the project using the MVC (Model-View-Controller) architecture to ensure clean and maintainable code.
   
 - __Data Validation:__ Implemented robust data validation techniques to ensure the integrity of information received by the API.
   
