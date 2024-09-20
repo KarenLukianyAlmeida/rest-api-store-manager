@@ -5,7 +5,7 @@ This project aimed to develop an API that manages sales and products in a store 
 
 ## Technologies
 
-> Back-end: Node.js, TypeScript, Express, MySQL, SQL, Mocha, Sinon, Chai and VS Code. 
+> Node.js | TypeScript | Express | MySQL | SQL | Mocha | Sinon | Chai | VS Code. 
 
 # Skills Developed
 
